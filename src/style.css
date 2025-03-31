@@ -1,5 +1,79 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 body{
-    background: white;
+    background: green;
+
+    flex-direction: column;
+    margin: 20px;
+    display: flex;
+    height: 100vh;
 }
+
+.card {
+    width: 200px;
+    height: 240px;
+    background: white; 
+    margin-top: 20px;
+    padding: 10px;
+
+}
+
+.icon-left{
+    color: rgb(175, 45, 45);
+    font-size: 2em;
+    
+}
+
+.icon-right{
+
+    color: rgb(175, 45, 45);
+    font-size: 2em;
+    
+}
+
+.card-head{
+    display:inline-block;
+    vertical-align:top;
+    height: 20vh;
+
+
+}
+
+.body-card{
+    vertical-align:top;
+    display: flex;
+    height: 450vh;
+    justify-content: center;
+
+}
+
+.footer-card{
+    display:flex;
+    vertical-align:top;
+    height: 20vh;
+    justify-content: flex-end ;
+
+}
+
+
+h1 {
+    font-size: 3em;
+    display: flex;
+    justify-content: center;    
+    position: relative;
+ 
+}
+
+.menu{
+    display: flex;
+    width: 500px;
+    margin-top: 20px;
+    padding: 10px;
+    justify-content: center;
+
+}
+
+.cardContainer {
+        display: flex;
+        gap: 15px;
+    }
