@@ -14,6 +14,7 @@ import "./assets/img/4geeks.ico";
 
 
 let cardContainer = document.querySelector('.cardContainer');
+let drawButton = document.querySelector('#drawButton');
 
 let cardsData = [];
 
@@ -75,6 +76,7 @@ function valorNumerico(carta) {
 }
 
 
+
 drawButton.onclick = function () {
   const user = document.getElementById("user");
   const value = parseInt(user.value);
@@ -92,7 +94,7 @@ drawButton.onclick = function () {
   }
 
 };
-cardsData.forEach(card => addElement(card.numero, card.icon));
+
 
 
 function bubbleSort(arr) {
@@ -106,9 +108,11 @@ function bubbleSort(arr) {
         swapped = true;
       }
     }
-    wall--;
+    wall--; 
   } while (swapped);
 }
+
+
 
 
 sortButton.onclick = function () {
