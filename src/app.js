@@ -97,28 +97,59 @@ drawButton.onclick = function () {
 
 
 
-function bubbleSort(arr) {
+function visualizarBubbleSort(arr) {
   let wall = arr.length - 1;
-  let swapped;
-  do {
-    swapped = false;
-    for (let i = 0; i < wall; i++) {
-      if (valorNumerico(arr[i].numero) > valorNumerico(arr[i + 1].numero)) {
-        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-        swapped = true;
+  let j = 0;
+
+  const sortContainer = document.querySelector('.cardSort');
+  sortContainer.innerHTML = ""; // Limpiar visualizaciones anteriores
+
+  function paso() {
+    if (wall <= 0) return;
+
+    if (j < wall) {
+      if (valorNumerico(arr[j].numero) > valorNumerico(arr[j + 1].numero)) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
+      j++;
+    } else {
+      wall--;
+      j = 0;
     }
-    wall--; 
-  } while (swapped);
+
+    // Crear una nueva fila para este paso
+    let fila = document.createElement("div");
+    fila.className = "d-flex  gap-2 mb-3";
+
+    arr.forEach(card => {
+      let cardDiv = document.createElement("div");
+      cardDiv.innerHTML = `
+        <div class="card">
+          <div class="head-card">
+            <span class="icon-left" id="icon-left" style="color: ${card.icon.color}">${card.icon.pinta}</span>
+          </div>
+          <div class="body-card">
+            <h1>${card.numero}</h1>  
+          </div>
+          <div class="footer-card">
+            <span class="icon-right" id="icon-right" style="color: ${card.icon.color}">${card.icon.pinta}</span> 
+          </div>
+        </div>
+      `;
+      fila.appendChild(cardDiv);
+    });
+
+    sortContainer.appendChild(fila);
+
+    setTimeout(paso, 500); // Esperar 500ms entre pasos
+  }
+
+  paso(); // Inicia el ordenamiento visual
 }
 
-
-
-
 sortButton.onclick = function () {
-  bubbleSort(cardsData);
-  cardContainer.innerHTML = "";
-  cardsData.forEach(card => addElement(card.numero, card.icon));
+  cardContainer.innerHTML="";
+  visualizarBubbleSort(cardsData);
 };
 
 
